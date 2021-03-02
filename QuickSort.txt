@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+int Partition(int a[],int lb ,int ub){
+    
+    int pivot=a[lb];
+    int s=lb;
+    int e=ub;
+while(s<e){
+    while(a[s]<=pivot)
+        s+=1;
+    while(a[e]>pivot)
+        e-=1;
+    if(s<e)
+        swap(a[s], a[e]); 
+    }
+    swap(a[lb],a[e]);
+    
+    return e;
+    
+}
+
+void QuickSort(int a[], int lb , int ub)
+{
+    int j;
+    if(lb<ub)
+    {
+        j = Partition(a,lb,ub);
+        QuickSort(a,lb,j-1);
+        QuickSort(a,j+1,ub);
+    }
+}
+
+int main()
+{
+ 
+ int n;
+ cin>>n;
+ int a[n];
+ for(int i =0 ; i< n ; i++)
+    cin>>a[i];
+QuickSort(a,0,n-1);
+for(int i =0 ; i< n ; i++)
+    cout<<a[i];
+
+    return 0;
+}
